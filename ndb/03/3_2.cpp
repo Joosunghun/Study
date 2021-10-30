@@ -1,4 +1,5 @@
-// 큰 수의 법칙
+// 3_2 큰 수의 법칙
+// N개 자연수, M번 더하는데 K 만큼만 연속해서 더해질 수 있음
 
 #include <iostream>
 #include <algorithm>
@@ -12,25 +13,22 @@ int main() {
 	int count = 0;
 	cin >> n >> m >> k;
 
-	for (i = 0; i < n; i++) {
-		cin >> arr[i];                        // n 수만큼 배열에 숫자 넣기
+	for (i = 0; i < n; i++) {                                // n 개의 수를 arr에 넣기
+		int x;
+		cin >> x;
+		arr.push_back(x);
 	}
 
 	sort(arr.begin(), arr.end());                      // 정렬
-	for (i = 0; i < n; i++)
-		cout << arr[i] << " ";
+	int first = arr[n - 1];                                 // 가장 큰 수
+	int second = arr[n - 2];                           // 두 번째로 큰수
 
-	for (i = 0; i < m; i++) {
-		if (count == k) {
-			result += arr[n - 2];
-			count = 0;
-			continue;
-		}
+	count = (m / (k + 1)) * k;                         // 가장 큰 수가 더해지는 횟수 계산
+	count += m % (k + 1);
 
-		count += 1;
-		result += arr[n-1];
+	result += count * first;                             // 가장 큰 수 더하기
+	result += (m - count) * second;               // 두 번째로 큰 수 더하기
 
-		cout << result << endl;
-	}
+	cout << result << endl;
 	
 }
