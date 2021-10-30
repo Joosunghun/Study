@@ -3,6 +3,7 @@
 // 화폐 개수를 최소한으로 사용하는 방법
 // 경우의 수를 출력 불가능 할 때는 -1 을 출력
 
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -19,6 +20,6 @@ int main(void) {
 		cin >> x ;
 		arr.push_back(x);
 	}
-
-
+	
+	retunr - 1;
 }
