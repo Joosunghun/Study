@@ -12,8 +12,8 @@
 using namespace std;
 
 int n, m;                                                 // 집의 개수와 길의 개수
-int parent[100001];                                 // 부모 테이블 초기화
-vector<pair<int, pair<int, int>>> edge;       // 모든 간선을 담을 리스트
+int parent[100001];                                  // 부모 테이블 초기화
+vector<pair<int, pair<int, int>>> edge;        // 모든 간선을 담을 리스트
 int result = 0;                                          // 최종 비용을 담을 변수
 
 int findParent(int x) {                               // 루트 노드가 아니라면, 루트 노드를 찾을 때 까지 재귀 
@@ -21,7 +21,7 @@ int findParent(int x) {                               // 루트 노드가 아니라면, �
 	return parent[x] = findParent(parent[x]);
 }
 
-void unionParent(int n, int m) {
+void unionParent(int n, int m) {                 // 두 원소가 속한 집합 합치기
 	n = findParent(n);
 	m = findParent(m);
 	if (n < m) parent[m] = n;
@@ -29,26 +29,26 @@ void unionParent(int n, int m) {
 }
 
 int main(void) {
-	cin >> n >> m;
+	cin >> n >> m;                                   // 집의 개수와, 길의 개수
 
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) {                      //  부모 테이블상에서, 부모를 자기 자신으로 초기화
 		parent[i] = i;
 	}
 
-	for (int i = 0; i < m; i++) {
+	for (int i = 0; i < m; i++) {                      // 모든 길에 대한 정보 입력 받기
 		int a, b, cost;
 		cin >> a >> b >> cost;
-		edge.push_back({ cost,{a,b} });;
+		edge.push_back({ cost,{a,b} });      // 비용 순으로 정렬하기 위해 튜플의 첫 번째 원소를 비용으로 설정
 	}
 
-	sort(edge.begin(), edge.end());
-	int last = 0;
+	sort(edge.begin(), edge.end());            // 비용 순으로 정렬
+	int last = 0;                                          // 최소 신장 트리에 퐇마되는 간선 중 비용이 가장 큰 간선
 
-	for (int i = 0; i < edge.size(); i++) {
+	for (int i = 0; i < edge.size(); i++) {         // 간선을 하나씩 확인
 		int cost = edge[i].first;
 		int n = edge[i].second.first;
 		int m = edge[i].second.second;
-		if (findParent(n) != findParent(m)) {
+		if (findParent(n) != findParent(m)) {     // 사이클이 발생하지 않으면 집합에 포함
 			unionParent(n, m);
 			result += cost;
 			last = cost;
