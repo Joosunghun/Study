@@ -1,5 +1,5 @@
-// 3_2 Å« ¼öÀÇ ¹ıÄ¢
-// N°³ ÀÚ¿¬¼ö, M¹ø ´õÇÏ´Âµ¥ K ¸¸Å­¸¸ ¿¬¼ÓÇØ¼­ ´õÇØÁú ¼ö ÀÖÀ½
+// 3_2 í° ìˆ˜ì˜ ë²•ì¹™
+// Nê°œ ìì—°ìˆ˜, Më²ˆ ë”í•˜ëŠ”ë° K ë§Œí¼ë§Œ ì—°ì†í•´ì„œ ë”í•´ì§ˆ ìˆ˜ ìˆìŒ
 
 #include <iostream>
 #include <algorithm>
@@ -13,21 +13,21 @@ int main() {
 	int count = 0;
 	cin >> n >> m >> k;
 
-	for (i = 0; i < n; i++) {                                // n °³ÀÇ ¼ö¸¦ arr¿¡ ³Ö±â
+	for (i = 0; i < n; i++) {                                // n ê°œì˜ ìˆ˜ë¥¼ arrì— ë„£ê¸°
 		int x;
 		cin >> x;
 		arr.push_back(x);
 	}
 
-	sort(arr.begin(), arr.end());                      // Á¤·Ä
-	int first = arr[n - 1];                                 // °¡Àå Å« ¼ö
-	int second = arr[n - 2];                           // µÎ ¹øÂ°·Î Å«¼ö
+	sort(arr.begin(), arr.end());                      // ì •ë ¬
+	int first = arr[n - 1];                                 // ê°€ì¥ í° ìˆ˜
+	int second = arr[n - 2];                           // ë‘ ë²ˆì§¸ë¡œ í°ìˆ˜
 
-	count = (m / (k + 1)) * k;                         // °¡Àå Å« ¼ö°¡ ´õÇØÁö´Â È½¼ö °è»ê
+	count = (m / (k + 1)) * k;                         // ê°€ì¥ í° ìˆ˜ê°€ ë”í•´ì§€ëŠ” íšŸìˆ˜ ê³„ì‚°
 	count += m % (k + 1);
 
-	result += count * first;                             // °¡Àå Å« ¼ö ´õÇÏ±â
-	result += (m - count) * second;               // µÎ ¹øÂ°·Î Å« ¼ö ´õÇÏ±â
+	result += count * first;                             // ê°€ì¥ í° ìˆ˜ ë”í•˜ê¸°
+	result += (m - count) * second;               // ë‘ ë²ˆì§¸ë¡œ í° ìˆ˜ ë”í•˜ê¸°
 
 	cout << result << endl;
 	
