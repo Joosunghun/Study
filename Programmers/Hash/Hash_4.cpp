@@ -29,8 +29,8 @@ vector<int> solution(vector<string> genres, vector<int> plays) {
         sort(k.second.begin(), k.second.end(), compare);
     }
 
-    genre_play_cnt_v.assign(genre_play_cnt.begin(), genre_play_cnt.end());               // 장르별 총 재생횟수를 내림 차순으로 정렬
-    sort(genre_play_cnt_v.begin(), genre_play_cnt_v.end(), compare_map_value);
+    genre_play_cnt_v.assign(genre_play_cnt.begin(), genre_play_cnt.end());               // assign(원소의 개수, 값) -> 특정 원소로 채운다(이전 데이터는 저장 x)
+    sort(genre_play_cnt_v.begin(), genre_play_cnt_v.end(), compare_map_value);        // 장르별 총 재생횟수를 내림 차순으로 정렬
 
     for (int i = 0; i < genre_play_cnt_v.size(); i++) {                              
         string genre_name = genre_play_cnt_v[i].first;                               
